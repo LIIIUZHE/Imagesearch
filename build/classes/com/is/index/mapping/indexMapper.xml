@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.is.index.dao.InformationDao" >
+
+	<select id="UserLogin" parameterType="com.is.index.dto.InformationDto"  resultType="com.is.index.dto.InformationDto" >
+    	select username, password from P_INFORMATION where username=#{username} and password=#{password}
+  	</select>
+  	
+  	<select id="GetOneUser" parameterType="com.is.index.dto.InformationDto"  resultType="com.is.index.dto.InformationDto" >
+    	select * from P_INFORMATION where username=#{username}
+  	</select>
+  	
+  	<insert id="UserRegist" parameterType="com.is.index.dto.InformationDto">
+		insert into P_INFORMATION(userid, username, nickname, sex, phonenumber, birthday,email,address,constellation,password) values (
+			SYS_GUID(),	#{username}, #{nickname}, #{sex}, #{phonenumber}, #{birthday},#{email},#{address},#{constellation},#{password}	)
+	</insert>
+	
+	<update id="UpdateUser" parameterType="com.is.index.dto.InformationDto">
+		update  P_INFORMATION set nickname=#{nickname}, sex=#{sex}, phonenumber=#{phonenumber}, birthday=#{birthday},email=#{email},address=#{address},constellation=#{constellation} where username = #{username}
+	</update>
+
+</mapper>

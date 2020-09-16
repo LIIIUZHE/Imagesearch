@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.is.index.dao.PinglunDao" >
+
+  	<insert id="pinglun" parameterType="com.is.index.dto.PinglunDto">
+		insert into p_pinglun (pinglun_id, pinglun_pictureid, pinglun_content ) values (
+			SYS_GUID(),	#{pinglun_pictureid}, #{pinglun_content} )
+	</insert>
+	
+	<select id="SelectPinglunByPictureId" resultType="com.is.index.dto.PinglunDto"  parameterType="com.is.index.dto.PinglunDto">
+    	select * from p_pinglun where pinglun_pictureid=#{pinglun_pictureid}
+  	</select>
+  	
+</mapper>
